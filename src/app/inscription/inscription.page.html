@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login" icon="chevron-back-circle"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Enregistrement</ion-title>
+  </ion-toolbar>
+  
+  
+    <ion-buttons slot="start">
+      
+        <ion-icon routerLink="/login" name="chevron-back-circle"></ion-icon>
+     
+    </ion-buttons>
+    <div class="head">
+      <ion-img class="logo" src="assets\logo.png" alt="i-shop logo">
+      </ion-img>
+      <ion-label class="titre" color="primary">S'inscrire</ion-label>
+    </div>
+  
+  <ion-list class="form">
+
+    <ion-input placeholder="Nom"  type="text" [(ngModel)]="name"></ion-input>
+    <ion-input placeholder="Email" type="text" [(ngModel)]="email"></ion-input>
+    <ion-input placeholder="Mot-de-passe" type="Password" [(ngModel)]="password"></ion-input>
+   
+  </ion-list>
+
+  <ion-button id="button" (click)=" signUp()"  class="butt">S'inscrire</ion-button>
+  
+   
+     
+    <div >Deja un compte ?<span id="org" routerLink="/login">  Connectez vous</span></div>
+    
+      
+
+

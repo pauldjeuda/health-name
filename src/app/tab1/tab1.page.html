@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Choose your tests</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar placeholder="Search"></ion-searchbar>
+
+  <ion-segment [(ngModel)]="selectedSegment" (ionChange)="onSegmentChange()">
+    <ion-segment-button value="simple">
+      <ion-label>Simple</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="pack">
+      <ion-label>Pack</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+   <!-- <div *ngIf="selectedSegment === 'simple'">
+    <ion-list *ngFor="let item of items | async ">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>{{tests.name}}</ion-card-title>
+          <ion-card-subtitle class="time">{{tests.duration}} days</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          {{tests.cost}} FCFA
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+  </div>  -->
+
+  <!-- <div *ngIf="selectedSegment === 'pack'">
+    <ion-list *ngFor="let pack of packTests">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Pack {{pack.name}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+  </div> -->
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="medkit-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

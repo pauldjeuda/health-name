@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Yours tests statut
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment [(ngModel)]="selectedSegment" (ionChange)="filterTests(selectedSegment)">
+    <ion-segment-button value="all">
+      All
+    </ion-segment-button>
+    <ion-segment-button value="pending">
+      W. levy
+    </ion-segment-button>
+    <ion-segment-button value="paid">
+      W. paiement
+    </ion-segment-button>
+    <ion-segment-button value="result">
+      W. Result
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-card *ngFor="let test of filteredTests" [class.test-status-pending]="test.status === 'pending'" [class.test-status-paid]="test.status === 'paid'" [class.test-status-result]="test.status === 'result'">
+    <ion-card-header>
+      <ion-card-title>{{ test.date }}</ion-card-title>
+      <ion-card-subtitle>{{ test.cost }} FCFA</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ test.name }}</p>
+      <p>{{ test.delay }} Jours</p>
+      <p>{{ test.cost }} Tests</p>
+      <ion-button *ngIf="test.status === 'pending'" color="primary" expand="block">Waiting levy</ion-button>
+      <ion-button *ngIf="test.status === 'paid'" color="secondary" expand="block">Waiting paiement</ion-button>
+      <ion-button *ngIf="test.status === 'result'" color="success" expand="block">Waiting result</ion-button>
+    </ion-card-content>
+  </ion-card>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="medkit-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

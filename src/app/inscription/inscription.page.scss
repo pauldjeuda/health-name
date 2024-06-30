@@ -1,0 +1,101 @@
+.head{
+  
+    .logo{
+      width: 200px; 
+      height: 190px;
+      display: block;
+      margin-right: auto;
+      margin-left: auto;
+      margin-top: 35px;
+    }
+  
+    .titre{
+      font-size: 40px;
+      font-weight: bold;
+        border-bottom: none;
+      
+      
+    }
+    text-align: center;
+  }
+  ion-content{
+    text-align: center;
+  }
+  .form{
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    
+    
+  
+    ion-input{
+        border-radius: 30px;
+        background: #D9D9D9;
+      margin-bottom: 20px;
+      margin-left: 35px;
+    
+      width: 85%;
+      align-items: center;
+      padding: 10px;
+      font-family: Poppins,sans-serif;
+    }
+  }
+  
+  p a{
+    text-decoration: none;
+    color: black; 
+  text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+
+  
+  #mess{
+    color: black;
+    font-family: poppins, sans-serif;
+    font-size: 100%;
+  }
+  
+  .t{
+    margin: 0 10px;
+    font-size: 20px;
+  }
+  
+  .log{
+    text-decoration: none;
+    color: black; 
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+   
+  }
+  
+  .log a{
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #1E9C09;
+    text-decoration: none;
+   }
+   #org{
+    color: #2B4724;
+    font-size: large;
+  }
+  
+    
+  div{
+  font-size: large;
+  }
+  
+  
+  ion-title{
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 50px;
+    color: #030303;
+  }
+
+.butt{
+    margin-bottom: 20px;
+}

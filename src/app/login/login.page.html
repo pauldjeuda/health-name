@@ -1,0 +1,72 @@
+<!-- <ion-content>
+  <div class="circle-container">
+    <div class="circle-1"></div>
+    <div class="circle-2"></div>
+    <div class="title-container">
+     
+      <h1 class="title">Do your medical exams at home</h1>
+    </div>
+  </div>
+  <div class="connect-by-goodle">
+    <ion-button color="primary" expand="block">
+      <ion-icon name="logo-google" slot="start"></ion-icon>
+      <span>Connect by google</span>
+    </ion-button>
+    <ion-button color="dark" expand="block">
+      <ion-icon name="logo-apple" slot="start"></ion-icon>
+      <span>Connect by apple</span>
+    </ion-button>
+  </div>
+</ion-content> -->
+
+<ion-header>
+  
+</ion-header>
+
+
+<ion-content >
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+   
+  <div class="head">
+    <ion-img class="logo"
+    src="assets\logo.png"
+    alt="">
+    </ion-img>
+    <ion-label class="titre" color="primary">Se connecter</ion-label>
+    <br><br>
+  </div>
+ 
+    <ion-list class="form" >
+
+      
+      <ion-input placeholder="email" type="email" [(ngModel)]="email"></ion-input>
+      <br>
+      <ion-input id="messa" placeholder="Mot-de-passe" type="Password" [(ngModel)]="password"></ion-input>
+    </ion-list>
+
+
+    
+   
+    
+    <ion-button id="button" (click)="loginWithCredentialsFunc()" >
+      <span *ngIf="!this.islogin">Se connecter</span>
+      <span *ngIf="this.islogin">Se connecter</span>
+      
+    </ion-button>
+    <div >Ou</div>
+    <ion-button id="button" (click)="loginWithGoogleFunc()" >
+      <ion-icon name="logo-google" slot="start"></ion-icon>
+      <span>Connect by google</span>
+    </ion-button>
+    
+     <ion-button id="button" color="dark" >
+      <ion-icon name="logo-apple" slot="start"   routerLink="/tabs/tab1"></ion-icon>
+      <span>Connect by apple</span>
+    </ion-button> 
+
+    <div>Pas de compte ?<span id="org" routerLink="/inscription">  Créer un compte</span></div> 
+
+
+</ion-content>
