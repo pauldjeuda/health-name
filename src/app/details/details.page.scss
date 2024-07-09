@@ -1,0 +1,75 @@
+ion-content {
+    --background: var(--ion-color-light);
+  }
+  
+  ion-card {
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  ion-card-header {
+    background-color: var(--ion-color-primary);
+    color: var(--ion-color-light);
+    padding: 15px;
+  }
+  
+  ion-card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  ion-card-content {
+    padding: 20px;
+  }
+  
+  .title {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: var(--ion-color-primary);
+  }
+  
+  .duration,
+  .price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--ion-color-medium);
+  }
+  
+  .ion-text-right {
+    text-align: right;
+  }
+  
+  ion-button {
+    margin-top: 30px;
+    --background: var(--ion-color-primary);
+    --color: var(--ion-color-light);
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+
+
+  ion-card {
+    margin: 8px 0;
+  }
+  
+  ion-card-title {
+    font-size: 1.2rem;
+  }
+  
+  ion-item {
+    --padding-start: 0;
+    --inner-padding-start: 16px;
+    --inner-padding-end: 16px;
+  }
+  
+  ion-label.title {
+    font-weight: bold;
+  }
+  
+  ion-label.description, ion-label.duration, ion-label.price {
+    font-size: 1rem;
+    color: #666;
+  }
+  

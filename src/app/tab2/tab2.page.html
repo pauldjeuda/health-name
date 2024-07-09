@@ -15,10 +15,10 @@
       W. levy
     </ion-segment-button>
     <ion-segment-button value="paid">
-      W. paiement
+      W. Result
     </ion-segment-button>
     <ion-segment-button value="result">
-      W. Result
+      Result
     </ion-segment-button>
   </ion-segment>
 
@@ -32,8 +32,8 @@
       <p>{{ test.delay }} Jours</p>
       <p>{{ test.cost }} Tests</p>
       <ion-button *ngIf="test.status === 'pending'" color="primary" expand="block">Waiting levy</ion-button>
-      <ion-button *ngIf="test.status === 'paid'" color="secondary" expand="block">Waiting paiement</ion-button>
-      <ion-button *ngIf="test.status === 'result'" color="success" expand="block">Waiting result</ion-button>
+      <ion-button *ngIf="test.status === 'paid'" color="secondary" expand="block">Waiting result</ion-button>
+      <ion-button *ngIf="test.status === 'result'" color="success" expand="block">Result</ion-button>
     </ion-card-content>
   </ion-card>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">

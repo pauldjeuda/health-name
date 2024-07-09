@@ -1,0 +1,43 @@
+<ion-header *ngIf="packDetails$ | async as pack">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ pack.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card *ngIf="packDetails$ | async as pack">
+    <ion-card-header>
+      <ion-card-title>{{ pack.name }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+  
+      <ion-list lines="full">
+        <ion-item>
+          <ion-label class="title">Description:</ion-label>
+          <ion-label class="detail">{{ pack.description }} </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label class="title">Instruction:</ion-label>
+          <ion-label class="detail">{{ pack.instruction }} </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label class="title">Liste des tests:</ion-label>
+          <ion-label class="detail">{{ pack.listTest }} </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label class="title">Durée:</ion-label>
+          <ion-label class="detail">{{ pack.time }} jours</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label class="title">Prix:</ion-label>
+          <ion-label class="detail">{{ pack.price }} FCFA</ion-label>
+        </ion-item>
+      </ion-list>
+
+      <ion-button expand="block" shape="round" class="ion-margin-top" (click)="addToCart(pack)">Ajouter au panier</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

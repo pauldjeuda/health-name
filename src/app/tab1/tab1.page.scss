@@ -3,6 +3,40 @@
 }
 ion-card{
     border-radius: 15px;
+    
 }
+  
+  ion-card {
+    margin: 8px 0;
+  }
+  
+  ion-card-title {
+    font-size: 1.2rem;
+  }
+  
+  .quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .quantity-controls ion-input {
+    width: 50px;
+    text-align: center;
+  }
+  
+  .quantity-controls ion-button {
+    --padding-start: 0;
+    --padding-end: 0;
+    --min-width: 30px;
+    --min-height: 30px;
+  }
+  
 
+
+  img{
+    width: 120px;
+    height: 80px;
+  }
+  
 
