@@ -4,6 +4,9 @@ import { Observable } from 'rxjs';
 import { ActionSheetController, IonModal, ToastController } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
 import { CartService } from '../cart.service';
+import { PaymentService } from '../payment.service';
+
+
 
 @Component({
   selector: 'app-tab1',
@@ -26,7 +29,8 @@ export class Tab1Page implements OnInit {
     private actionSheetCtrl: ActionSheetController,
     private navCtrl: NavController,
     private cartService: CartService,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private paymentService: PaymentService
   ) {
     this.items = this.firestore.collection('tests').valueChanges();
     this.packs = this.firestore.collection('packs').valueChanges();
@@ -71,36 +75,27 @@ export class Tab1Page implements OnInit {
   }
 
   pay() {
-    if (this.paymentModal) {
-      this.paymentModal.present();
-    }
+    this.saveOrder();
   }
 
-  async processPayment(method: string) {
-    // Fermeture de la modal de sélection de paiement
-    if (this.paymentModal) {
-      await this.paymentModal.dismiss();
-    }
+  saveOrder() {
+    const order = {
+      items: this.cartItems,
+      totalCost: this.calculateTotal(),
+      date: new Date().toISOString(),
+      status: 'pending'
+    };
 
-    if (method === 'orangeMoney') {
-      this.payWithOrangeMoney();
-    } else if (method === 'mtnMoney') {
-      this.payWithMtnMoney();
-    }
-  }
-
-  payWithOrangeMoney() {
-    // Implémentation du paiement avec Orange Money
-    console.log('Paiement avec Orange Money');
-    this.presentToast('Paiement avec Orange Money en cours...');
-    // Ajoutez ici la logique pour effectuer un paiement avec Orange Money
-  }
-
-  payWithMtnMoney() {
-    // Implémentation du paiement avec MTN Money
-    console.log('Paiement avec MTN Money');
-    this.presentToast('Paiement avec MTN Money en cours...');
-    // Ajoutez ici la logique pour effectuer un paiement avec MTN Money
+    this.firestore.collection('orders').add(order).then(() => {
+      this.presentToast('Commande enregistrée avec succès');
+      this.cartService.clearCart(); // Efface le panier après enregistrement
+      if (this.modal) {
+        this.modal.dismiss();
+      }
+    }).catch(error => {
+      this.presentToast('Erreur lors de l\'enregistrement de la commande');
+      console.error('Erreur lors de l\'enregistrement de la commande:', error);
+    });
   }
 
   canDismiss = async () => {

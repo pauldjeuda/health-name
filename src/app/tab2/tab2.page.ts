@@ -1,40 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-tab2',
-  templateUrl: 'tab2.page.html',
-  styleUrls: ['tab2.page.scss']
+  templateUrl: './tab2.page.html',
+  styleUrls: ['./tab2.page.scss']
 })
-export class Tab2Page {
-  tests = [
-    {
-      date: "13-09-2020",
-      name: "Epatite A",
-      delay: 3,
-      status: "paid",
-      cost: 10000
-    },
-    {
-      date: "14-09-2023",
-      name: "Epatite A",
-      delay: 3,
-      status: "pending",
-      cost: 10000
-    },
-    {
-      date: "13-09-2020",
-      name: "Epatite A",
-      delay: 3,
-      status: "result",
-      cost: 10000
-    }
-  ];
-
-  filteredTests: any[] | undefined;
+export class Tab2Page implements OnInit {
+  tests: any[] = [];
+  filteredTests: any[] = [];
   selectedSegment: string = 'all';
 
-  constructor() {
-    this.filterTests('all');
+  constructor(private firestore: AngularFirestore) {}
+
+  ngOnInit() {
+    this.firestore.collection('orders').valueChanges({ idField: 'id' }).subscribe((data: any) => {
+      this.tests = data;
+      this.filterTests(this.selectedSegment);
+    });
   }
 
   filterTests(status: string) {
@@ -44,5 +27,13 @@ export class Tab2Page {
     } else {
       this.filteredTests = this.tests.filter(test => test.status === status);
     }
+  }
+
+  deleteTest(test: any) {
+    this.firestore.collection('orders').doc(test.id).delete().then(() => {
+      console.log('Test deleted successfully');
+    }).catch((error) => {
+      console.error('Error deleting test:', error);
+    });
   }
 }

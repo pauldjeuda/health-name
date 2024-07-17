@@ -1,0 +1,26 @@
+ion-header {
+    --background: var(--ion-color-primary);
+    --color: var(--ion-color-primary-contrast);
+    ion-title {
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+  }
+  
+  ion-content {
+    ion-segment {
+      margin: 1rem;
+    }
+  
+    form {
+      margin: 1rem;
+      ion-item {
+        margin-bottom: 1rem;
+      }
+      ion-button {
+        margin-top: 1rem;
+      }
+    }
+  }
+  

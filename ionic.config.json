@@ -1,7 +1,8 @@
 {
   "name": "healthtest",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }

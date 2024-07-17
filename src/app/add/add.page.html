@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Ajouter un test ou un pack</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-segment [(ngModel)]="selectedSegment" (ionChange)="onSegmentChange()">
+    <ion-segment-button value="test">
+      <ion-label>Test</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="pack">
+      <ion-label>Pack</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <!-- Formulaire pour ajouter un test -->
+  <form *ngIf="selectedSegment === 'test'" (ngSubmit)="addTest()">
+    <ion-item>
+      <ion-label position="floating">Nom</ion-label>
+      <ion-input type="text" [(ngModel)]="test.name" name="testName"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Description</ion-label>
+      <ion-input type="text" [(ngModel)]="test.description" name="testDescription"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Prix</ion-label>
+      <ion-input type="number" [(ngModel)]="test.price" name="testPrice"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Durée</ion-label>
+      <ion-input type="text" [(ngModel)]="test.time" name="testTime"></ion-input>
+    </ion-item>
+    <ion-button expand="block" type="submit">Ajouter le test</ion-button>
+  </form>
+
+  <!-- Formulaire pour ajouter un pack -->
+  <form *ngIf="selectedSegment === 'pack'" (ngSubmit)="addPack()">
+    <ion-item>
+      <ion-label position="floating">Nom</ion-label>
+      <ion-input type="text" [(ngModel)]="pack.name" name="packName"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Description</ion-label>
+      <ion-input type="text" [(ngModel)]="pack.description" name="packDescription"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Instruction</ion-label>
+      <ion-input type="text" [(ngModel)]="pack.instruction" name="packInstruction"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Liste des tests</ion-label>
+      <ion-input type="text" [(ngModel)]="pack.listTest" name="packListTest"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Prix</ion-label>
+      <ion-input type="number" [(ngModel)]="pack.price" name="packPrice"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Durée</ion-label>
+      <ion-input type="text" [(ngModel)]="pack.time" name="packTime"></ion-input>
+    </ion-item>
+    <ion-button expand="block" type="submit">Ajouter le pack</ion-button>
+  </form>
+</ion-content>
