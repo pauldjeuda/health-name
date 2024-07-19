@@ -6,8 +6,6 @@ import { NavController } from '@ionic/angular';
 import { CartService } from '../cart.service';
 import { PaymentService } from '../payment.service';
 
-
-
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -21,8 +19,11 @@ export class Tab1Page implements OnInit {
   items: Observable<any[]> | undefined;
   packs: Observable<any[]> | undefined;
   cartItems: any[] = [];
-
+  filteredItems: any[] = [];
+  filteredPacks: any[] = [];
+  searchTerm: string = '';
   selectedSegment: string = 'simple';
+  isDataLoaded: boolean = false;
 
   constructor(
     public firestore: AngularFirestore,
@@ -32,8 +33,8 @@ export class Tab1Page implements OnInit {
     private toastController: ToastController,
     private paymentService: PaymentService
   ) {
-    this.items = this.firestore.collection('tests').valueChanges();
-    this.packs = this.firestore.collection('packs').valueChanges();
+    this.loadItems();
+    this.loadPacks();
   }
 
   ngOnInit() {
@@ -43,8 +44,37 @@ export class Tab1Page implements OnInit {
     });
   }
 
+  loadItems() {
+    this.items = this.firestore.collection('tests').valueChanges();
+    this.items.subscribe(data => {
+      this.filteredItems = data;
+      this.isDataLoaded = true;
+    });
+  }
+
+  loadPacks() {
+    this.packs = this.firestore.collection('packs').valueChanges();
+    this.packs.subscribe(data => {
+      this.filteredPacks = data;
+      this.isDataLoaded = true;
+    });
+  }
+
   onSegmentChange() {
     this.selectedSegment = this.selectedSegment === 'pack' ? 'pack' : 'simple';
+    this.searchTests();
+  }
+
+  searchTests() {
+    if (this.selectedSegment === 'simple') {
+      this.filteredItems = this.filteredItems.filter(item =>
+        item.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    } else {
+      this.filteredPacks = this.filteredPacks.filter(pack =>
+        pack.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    }
   }
 
   async presentToast(message: string) {
