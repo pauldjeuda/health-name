@@ -15,13 +15,15 @@
     <ion-card-content>
       <ion-list lines="full">
         <ion-item>
-          <ion-label class="title">Description:</ion-label>
-          <ion-label class="detail">{{ pack.description }} </ion-label>
+          <p class="title">Description:<br><br>
+            <ion-label [style.color]="'var(--ion-color-dark)'" >  {{ pack.description }}</ion-label> 
         </ion-item>
+        <br>
         <ion-item>
-          <ion-label class="title">Instruction:</ion-label>
-          <ion-label class="detail">{{ pack.instruction }} </ion-label>
+          <p class="title">Instruction:<br><br>
+            <ion-label [style.color]="'var(--ion-color-dark)'" >  {{ pack.instruction }}</ion-label> 
         </ion-item>
+        <br>
         <ion-item>
           <ion-label class="title">Liste des tests:</ion-label>
           <ion-label class="detail">{{ pack.listTest }} </ion-label>

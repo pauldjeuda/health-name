@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 import { LoginService } from '../login.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inscription',
@@ -11,29 +13,47 @@ export class InscriptionPage implements OnInit {
   name: string = "";
   email: string = "";
   password: string = "";
+  matricule: string = "";
   islogin = false;
 
   constructor(
+    public navCntrl: NavController,
     private loginService: LoginService,
+    private afAuth: AngularFireAuth,
     private router: Router
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
 
   signUp() {
     this.islogin = true;
-    this.loginService.PwdEmailAuthRegister(this.email, this.password)
-      .then((res) => {
+    this.loginService.PwdEmailAuthRegister(this.email, this.password, this.name)
+    .then((res) => {
+      window.alert("Inscription réussie. Veuillez vérifier votre email.");
+      this.loginService.SendVerificationMail();
+      this.router.navigate(['verify-email']);
+      this.router.navigateByUrl('/login');
+      this.islogin = false;
+    })
+    .catch((error) => {
+      this.islogin = false;
+      window.alert(error.message);
+    });
+  }
+
+  loginWithGoogleFunc() {
+    this.islogin = true;
+    this.loginService.GoogleAuthLogin().then(
+      (d) => {
         this.islogin = false;
-        this.loginService.setUserName(this.name); // Stocker le nom de l'utilisateur
-        this.loginService.addUser({ uid: res.user?.uid, email: this.email, name: this.name });
-        this.loginService.SendVerificationMail();
-        window.alert("Inscription réussie. Veuillez vérifier votre email.");
-        this.router.navigate(['verify-email']);
-      })
-      .catch((error) => {
+        console.log(d);
+      }
+    ).catch(
+      (er) => {
         this.islogin = false;
-        window.alert(error.message);
-      });
+        console.log(er);
+      }
+    );
   }
 }

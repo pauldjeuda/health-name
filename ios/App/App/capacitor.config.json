@@ -1,0 +1,12 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "healthtest",
+	"webDir": "www",
+	"packageClassList": [
+		"AppPlugin",
+		"HapticsPlugin",
+		"KeyboardPlugin",
+		"StatusBarPlugin",
+		"CDVPlugin"
+	]
+}

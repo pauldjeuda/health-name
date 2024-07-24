@@ -26,10 +26,7 @@ const routes: Routes = [
     path: 'details/:id',
     loadChildren: () => import('./details/details.module').then( m => m.DetailsPageModule)
   },
-  {
-    path: 'detals-pack',
-    loadChildren: () => import('./detals-pack/detals-pack.module').then( m => m.DetalsPackPageModule)
-  },
+
   {
     path: 'details-pack/:id',
     loadChildren: () => import('./details-pack/details-pack.module').then( m => m.DetailsPackPageModule)

@@ -28,9 +28,17 @@ export class LoginService {
     });
   }
 
-  PwdEmailAuthRegister(email: string, password: string): Promise<any> {
+  PwdEmailAuthRegister(email: string, password: string, name: string): Promise<any> {
     return this.oAuth.createUserWithEmailAndPassword(email, password).then((result) => {
-      this.setUserData(result.user);
+      if (result.user) {
+        this.addUser({ 
+          uid: result.user.uid ?? '', 
+          email: result.user.email ?? '', 
+          name: name ?? '' 
+        });
+        this.setUserName(name);
+        this.SendVerificationMail();
+      }
     });
   }
 
@@ -41,19 +49,20 @@ export class LoginService {
   }
 
   addUser(user: UserData) {
-    return this.fireBase.collection('user').add(user);
+    return this.fireBase.collection('user').doc(user.uid).set(user); // Utilisez set au lieu de add pour spécifier l'UID du document
   }
 
   setUserData(user: any) {
-    this.fireBase.collection('user').doc(user.uid).valueChanges().subscribe((userData) => {
+    this.fireBase.collection('user').doc(user.uid).valueChanges().subscribe((userData: any) => {
       const userProfileData = {
         uid: user.uid,
         email: user.email,
-        displayName: this.userName || (userData as UserData)?.name || user.displayName || 'Nom d\'utilisateur',
+        name: userData?.name || user.displayName || '', // Utilisez le nom de l'utilisateur
         photoURL: user.photoURL,
         emailVerified: user.emailVerified
       };
       localStorage.setItem('user', JSON.stringify(userProfileData));
+      this.userName = userData?.name || user.displayName || ''; // Mettre à jour le nom de l'utilisateur
     });
   }
 

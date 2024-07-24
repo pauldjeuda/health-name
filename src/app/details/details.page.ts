@@ -4,6 +4,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { CartService } from '../cart.service';
+import { ActionSheetController, IonModal, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-details',
@@ -17,11 +18,13 @@ export class DetailsPage implements OnInit {
   // packDetails$: Observable<any> | undefined;
   packId: string | null = null;
   pack$: Observable<any> | undefined;
+ 
 
   constructor(
     private route: ActivatedRoute,
     private firestore: AngularFirestore,
-    private cartService: CartService
+    private cartService: CartService,
+    private toastController: ToastController,
   ) {}
 
   ngOnInit() {
@@ -39,8 +42,17 @@ export class DetailsPage implements OnInit {
       // }
     });
   }
+  async presentToast(message: string) {
+    const toast = await this.toastController.create({
+      message,
+      duration: 3000,
+      position: 'bottom'
+    });
+    toast.present();
+  }
   addToCart(item: any) {
     this.cartService.addToCart(item);
+    this.presentToast('Article ajouté au panier');
   }
 
 }

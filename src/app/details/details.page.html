@@ -14,9 +14,10 @@
     </ion-card-header>
     <ion-card-content>
       <ion-item>
-        <ion-label class="title">Description:</ion-label>
-        <ion-label class="description">{{ item.description }}</ion-label>
+        <p class="title">Description:<br><br>
+          <ion-label [style.color]="'var(--ion-color-dark)'" >  {{ item.description }}</ion-label> 
       </ion-item>
+      <br>
       <ion-item>
         <ion-label class="title">Durée:</ion-label>
         <ion-label class="duration">{{ item.time }} jours</ion-label>
@@ -25,7 +26,7 @@
         <ion-label class="title">Prix:</ion-label>
         <ion-label class="price">{{ item.price }} FCFA</ion-label>
       </ion-item>
-      <ion-button shape="round" (click)="addToCart(item)">Ajouter au panier</ion-button>
+      <ion-button shape="round" expand="block" (click)="addToCart(item)" class="ion-margin-top">Ajouter au panier</ion-button>
     </ion-card-content>
   </ion-card>
 </ion-content>

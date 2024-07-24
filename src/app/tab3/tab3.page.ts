@@ -22,12 +22,17 @@ export class Tab3Page implements OnInit {
   ) {}
 
   ngOnInit() {
-    const userData = JSON.parse(localStorage.getItem('user')!);
-    if (userData) {
-      this.user = userData;
-      this.name = userData.displayName || this.loginService.getUserName() || "Nom d'utilisateur"; // Utilisez le nom de l'utilisateur ou une valeur par défaut
-      this.email = userData.email || "email@example.com"; // Utilisez l'email de l'utilisateur ou une valeur par défaut
-    }
+    this.afAuth.authState.subscribe(user => {
+      if (user) {
+        this.loginService.setUserData(user);
+        const userData = JSON.parse(localStorage.getItem('user')!);
+        if (userData) {
+          this.user = userData;
+          this.name = userData.name || this.loginService.getUserName() || "Nom d'utilisateur"; // Utilisez le nom de l'utilisateur ou une valeur par défaut
+          this.email = userData.email || "email@example.com"; // Utilisez l'email de l'utilisateur ou une valeur par défaut
+        }
+      }
+    });
   }
 
   navigateToClientService() {

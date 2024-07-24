@@ -1,75 +1,59 @@
-ion-content {
-    --background: var(--ion-color-light);
-  }
-  
-  ion-card {
-    margin-bottom: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  ion-card-header {
-    background-color: var(--ion-color-primary);
-    color: var(--ion-color-light);
-    padding: 15px;
-  }
-  
-  ion-card-title {
+ion-header {
+  --background: var(--ion-color-primary);
+ 
+  ion-title {
+    font-family: var(--ion-font-family);
     font-size: 1.5rem;
     font-weight: bold;
+    text-align: center;
   }
+}
+
+ion-toolbar {
+  --background: var(--ion-color-primary);
   
+}
+
+ion-content {
+  --background: var(--ion-color-light);
+  .ion-padding {
+    padding: var(--ion-padding);
+  }
+}
+
+ion-card {
+  margin: var(--ion-padding);
+  border-radius: var(--ion-border-radius);
+  box-shadow: var(--ion-box-shadow);
+  font-family: var(--ion-font-family);
+  ion-card-header {
+    background: var(--ion-color-primary-tint);
+    color: var(--ion-color-primary-contrast);
+    border-radius: var(--ion-border-radius) var(--ion-border-radius) 0 0;
+  }
+  ion-card-title {
+    color: var(--ion-color-light);
+    font-size: 1.2rem;
+  }
   ion-card-content {
-    padding: 20px;
+    font-size: 1rem;
+    color: var(--ion-color-dark);
   }
-  
+  ion-button {
+    --border-radius: var(--ion-border-radius);
+    --background: var(--ion-color-primary);
+    --color: var(--ion-color-primary-contrast);
+  }
+}
+
+ion-item {
+  --background: transparent;
+  --border-color: var(--ion-color-medium);
   .title {
-    font-size: 0.9rem;
     font-weight: bold;
     color: var(--ion-color-primary);
   }
-  
-  .duration,
-  .price {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: var(--ion-color-medium);
+  .detail {
+    color: var(--ion-color-dark);
   }
-  
-  .ion-text-right {
-    text-align: right;
-  }
-  
-  ion-button {
-    margin-top: 30px;
-    --background: var(--ion-color-primary);
-    --color: var(--ion-color-light);
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: center;
-  }
-  
-
-
-  ion-card {
-    margin: 8px 0;
-  }
-  
-  ion-card-title {
-    font-size: 1.2rem;
-  }
-  
-  ion-item {
-    --padding-start: 0;
-    --inner-padding-start: 16px;
-    --inner-padding-end: 16px;
-  }
-  
-  ion-label.title {
-    font-weight: bold;
-  }
-  
-  ion-label.description, ion-label.duration, ion-label.price {
-    font-size: 1rem;
-    color: #666;
-  }
-  
+}

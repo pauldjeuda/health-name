@@ -54,3 +54,34 @@ ion-title {
   text-align: center;
 }
 }
+ion-label.close {
+  font-size: 21px;
+  font-weight: bold;
+  text-align: center; 
+}
+
+.centered-label {
+  justify-content: center;
+  text-align: center;
+}
+
+
+ion-label.close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+ion-label.close ion-icon {
+  margin-left: 8px; /* Ajoute un espacement entre le texte et l'icône */
+}
+
+.add {
+  margin-left: auto;
+  padding: auto;
+  width: 30px;
+  height: 30px;
+}

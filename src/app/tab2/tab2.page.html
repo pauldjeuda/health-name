@@ -26,18 +26,18 @@
     <ion-card-header>
       <ion-icon name="close-circle" (click)="deleteTest(test)" color="primary" class="cancel"></ion-icon>
       <ion-card-title>{{ test.date }}</ion-card-title>
-      <ion-card-subtitle>{{ test.totalCost }} FCFA</ion-card-subtitle>
+      <ion-card-subtitle> Prix: {{ test.totalCost }} FCFA</ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
       <p *ngFor="let item of test.items">{{ item.name }} - {{ item.quantity }} pcs</p>
+      <p *ngIf="test.deliveryLocation">
+        <strong>Adresse de livraison:</strong> {{ test.deliveryLocation.address }}<br>
+        <strong>Coordonnées:</strong> {{ test.deliveryLocation.latitude }}, {{ test.deliveryLocation.longitude }}
+      </p>
       <ion-button *ngIf="test.status === 'pending'" color="primary" expand="block">Waiting levy</ion-button>
       <ion-button *ngIf="test.status === 'paid'" color="secondary" expand="block">Waiting paiement</ion-button>
       <ion-button *ngIf="test.status === 'result'" color="success" expand="block">Waiting result</ion-button>
     </ion-card-content>
   </ion-card>
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button>
-      <ion-icon name="medkit-outline"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+ 
 </ion-content>
